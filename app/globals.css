@@ -3,17 +3,189 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  --background:
+    radial-gradient(circle at 18% 12%, rgba(96, 165, 250, 0.08), transparent 32%),
+    radial-gradient(circle at 82% 88%, rgba(251, 191, 36, 0.05), transparent 34%),
+    linear-gradient(180deg, #0b1020 0%, #070b14 55%, #05070d 100%);
+  --foreground: #e5e7eb;
+  --muted: #9ca3af;
+  --card-bg: rgba(12, 18, 32, 0.72);
+  --card-bg-strong: rgba(10, 15, 27, 0.84);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-border-strong: rgba(255, 255, 255, 0.12);
+  --shadow-lg: 0 18px 50px rgba(0, 0, 0, 0.42);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.32);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+html,
 body {
-  @apply bg-neutral-950 text-white antialiased;
+  min-height: 100%;
 }
 
-strong {
-  @apply font-semibold text-white;
+body {
+  margin: 0;
+  color: var(--foreground);
+  background: var(--background);
+  background-attachment: fixed;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(96, 165, 250, 0.22);
+  color: #f9fafb;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply tracking-tight;
+  }
+
+  p {
+    @apply leading-7;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto max-w-6xl px-4 py-10 md:px-6;
+  }
+
+  .glass-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    @apply rounded-2xl;
+  }
+
+  .glass-card-strong {
+    background: var(--card-bg-strong);
+    border: 1px solid var(--card-border-strong);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    @apply rounded-2xl;
+  }
+
+  .soft-panel {
+    @apply rounded-xl border border-white/10 bg-black/20;
+  }
+
+  .hero-card {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
+      var(--card-bg-strong);
+    border: 1px solid var(--card-border-strong);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    @apply rounded-2xl p-8;
+  }
+
+  .metric-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    @apply rounded-2xl p-6;
+  }
+
+  .table-wrap {
+    @apply overflow-hidden rounded-xl border border-white/10;
+    background: rgba(0, 0, 0, 0.18);
+  }
+
+  .table-head {
+    @apply grid grid-cols-2 border-b border-white/10 bg-black/25;
+  }
+
+  .table-head-cell {
+    @apply px-4 py-3 text-sm font-medium text-neutral-300;
+  }
+
+  .table-row {
+    @apply grid grid-cols-2 border-b border-white/10 last:border-b-0;
+  }
+
+  .table-cell-label {
+    @apply px-4 py-3 text-sm text-neutral-400;
+  }
+
+  .table-cell-value {
+    @apply px-4 py-3 text-sm font-medium text-neutral-100;
+  }
+
+  .subtle-link-card {
+    @apply rounded-xl border border-white/10 bg-black/20 p-4 transition;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .subtle-link-card:hover {
+    @apply border-white/15 bg-black/30;
+    transform: translateY(-1px);
+  }
+}
+
+@layer utilities {
+  .text-soft {
+    color: var(--muted);
+  }
+
+  .ambient-top {
+    position: relative;
+  }
+
+  .ambient-top::before {
+    content: "";
+    position: absolute;
+    inset: -20% auto auto -10%;
+    width: 50%;
+    height: 50%;
+    pointer-events: none;
+    background: radial-gradient(
+      circle,
+      rgba(96, 165, 250, 0.14) 0%,
+      rgba(96, 165, 250, 0.06) 28%,
+      transparent 70%
+    );
+    filter: blur(36px);
+    z-index: -1;
+  }
+
+  .ambient-bottom::after {
+    content: "";
+    position: absolute;
+    inset: auto -8% -18% auto;
+    width: 42%;
+    height: 40%;
+    pointer-events: none;
+    background: radial-gradient(
+      circle,
+      rgba(251, 191, 36, 0.1) 0%,
+      rgba(251, 191, 36, 0.04) 30%,
+      transparent 72%
+    );
+    filter: blur(42px);
+    z-index: -1;
+  }
 }
