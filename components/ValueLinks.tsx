@@ -22,7 +22,7 @@ const STATES: State[] = [
   { slug: "massachusetts", name: "Massachusetts", shortName: "Mass." },
   { slug: "michigan", name: "Michigan" },
   { slug: "new-jersey", name: "New Jersey", shortName: "N. Jersey" },
-  { slug: "new-york", name: "New York", shortName: "New York" },
+  { slug: "new-york", name: "New York" },
   { slug: "north-carolina", name: "North Carolina", shortName: "N. Carolina" },
   { slug: "ohio", name: "Ohio" },
   { slug: "pennsylvania", name: "Pennsylvania", shortName: "Penn." },
@@ -43,13 +43,9 @@ function ConversionCard({
   return (
     <Link
       href={href}
-      className="group block rounded-xl border border-neutral-800 bg-neutral-950/60 p-4 transition hover:border-neutral-700 hover:bg-neutral-950"
+      className="block rounded-xl border border-neutral-800 bg-neutral-950/60 p-4 transition hover:border-neutral-700 hover:bg-neutral-950"
     >
-      <div className="min-h-[3rem]">
-        <div className="text-sm font-semibold leading-5 text-white break-words">
-          {title}
-        </div>
-      </div>
+      <div className="text-sm font-semibold leading-5 text-white">{title}</div>
       <p className="mt-2 text-xs leading-5 text-neutral-400">{description}</p>
     </Link>
   );
@@ -68,7 +64,7 @@ function StatePill({
       className="flex min-h-[44px] items-center justify-center rounded-lg border border-neutral-800 bg-neutral-950/60 px-3 py-2 text-center text-xs font-medium leading-4 text-neutral-200 transition hover:border-neutral-700 hover:bg-neutral-950"
       title={label}
     >
-      <span className="break-words">{label}</span>
+      <span>{label}</span>
     </Link>
   );
 }
@@ -115,7 +111,7 @@ export default function ValueLinks({
           take-home estimates.
         </p>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
           {conversionLinks.map((link) => (
             <ConversionCard
               key={link.href}
@@ -133,7 +129,7 @@ export default function ValueLinks({
             Compare take-home pay in other states
           </h2>
 
-          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
             {otherStates.map((state) => (
               <StatePill
                 key={state.slug}
