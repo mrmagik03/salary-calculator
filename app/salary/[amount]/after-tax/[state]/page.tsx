@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
@@ -17,16 +19,6 @@ function estimateNet(amount: number, stateRate: number) {
   const stateTax = amount * stateRate;
   const net = amount - federal - stateTax;
   return { federal, stateTax, net };
-}
-
-export function generateStaticParams() {
-  const params = [];
-  for (let amount = 10000; amount <= 300000; amount += 1000) {
-    for (const state of STATES) {
-      params.push({ amount: String(amount), state: state.slug });
-    }
-  }
-  return params;
 }
 
 export async function generateMetadata({
