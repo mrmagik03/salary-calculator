@@ -18,7 +18,7 @@ const SITE_URL = "https://mysalarycalculator.co";
 
 type PageProps = {
   params: Promise<{ amount: string }>;
-;
+};
 
 export async function generateMetadata({
   params,
