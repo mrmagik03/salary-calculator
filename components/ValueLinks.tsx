@@ -1,68 +1,148 @@
 import Link from "next/link";
-import { STATES } from "@/lib/states";
+
+type State = {
+  slug: string;
+  name: string;
+  shortName?: string;
+};
 
 type ValueLinksProps = {
   amount: number;
-  type?: "salary-after-tax" | "salary-core";
+  type?: "salary-after-tax" | "default";
   currentState?: string;
 };
 
-export default function ValueLinks({
-  amount,
-  type = "salary-core",
-  currentState,
-}: ValueLinksProps) {
+const STATES: State[] = [
+  { slug: "arizona", name: "Arizona" },
+  { slug: "california", name: "California" },
+  { slug: "colorado", name: "Colorado" },
+  { slug: "florida", name: "Florida" },
+  { slug: "georgia", name: "Georgia" },
+  { slug: "illinois", name: "Illinois" },
+  { slug: "massachusetts", name: "Massachusetts", shortName: "Mass." },
+  { slug: "michigan", name: "Michigan" },
+  { slug: "new-jersey", name: "New Jersey", shortName: "N. Jersey" },
+  { slug: "new-york", name: "New York", shortName: "New York" },
+  { slug: "north-carolina", name: "North Carolina", shortName: "N. Carolina" },
+  { slug: "ohio", name: "Ohio" },
+  { slug: "pennsylvania", name: "Pennsylvania", shortName: "Penn." },
+  { slug: "texas", name: "Texas" },
+  { slug: "virginia", name: "Virginia" },
+  { slug: "washington", name: "Washington" },
+];
+
+function ConversionCard({
+  href,
+  title,
+  description,
+}: {
+  href: string;
+  title: string;
+  description: string;
+}) {
   return (
-    <div className="space-y-8">
-      <div>
-        <h3 className="text-lg font-semibold text-white">Popular salary conversions</h3>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          <Link
-            href={`/salary/${amount}/to-hourly`}
-            className="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-5 transition hover:border-neutral-700 hover:bg-neutral-950"
-          >
-            <p className="text-base font-semibold">Salary to hourly</p>
-            <p className="mt-2 text-sm text-neutral-400">See the hourly rate for this yearly salary.</p>
-          </Link>
-          <Link
-            href={`/salary/${amount}/monthly`}
-            className="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-5 transition hover:border-neutral-700 hover:bg-neutral-950"
-          >
-            <p className="text-base font-semibold">Salary to monthly</p>
-            <p className="mt-2 text-sm text-neutral-400">Break this annual salary into monthly income.</p>
-          </Link>
-          <Link
-            href={`/salary/${amount}/biweekly`}
-            className="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-5 transition hover:border-neutral-700 hover:bg-neutral-950"
-          >
-            <p className="text-base font-semibold">Salary to biweekly</p>
-            <p className="mt-2 text-sm text-neutral-400">Estimate each paycheck on a biweekly schedule.</p>
-          </Link>
-          <Link
-            href={`/salary/${amount}/after-tax`}
-            className="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-5 transition hover:border-neutral-700 hover:bg-neutral-950"
-          >
-            <p className="text-base font-semibold">After-tax overview</p>
-            <p className="mt-2 text-sm text-neutral-400">Compare take-home pay by state.</p>
-          </Link>
+    <Link
+      href={href}
+      className="group block rounded-xl border border-neutral-800 bg-neutral-950/60 p-4 transition hover:border-neutral-700 hover:bg-neutral-950"
+    >
+      <div className="min-h-[3rem]">
+        <div className="text-sm font-semibold leading-5 text-white break-words">
+          {title}
         </div>
       </div>
+      <p className="mt-2 text-xs leading-5 text-neutral-400">{description}</p>
+    </Link>
+  );
+}
 
-      {type === "salary-after-tax" && (
-        <div>
-          <h3 className="text-lg font-semibold text-white">Compare take-home pay in other states</h3>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-            {STATES.filter((state) => state.slug !== currentState).map((state) => (
-              <Link
+function StatePill({
+  href,
+  label,
+}: {
+  href: string;
+  label: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className="flex min-h-[44px] items-center justify-center rounded-lg border border-neutral-800 bg-neutral-950/60 px-3 py-2 text-center text-xs font-medium leading-4 text-neutral-200 transition hover:border-neutral-700 hover:bg-neutral-950"
+      title={label}
+    >
+      <span className="break-words">{label}</span>
+    </Link>
+  );
+}
+
+export default function ValueLinks({
+  amount,
+  type = "default",
+  currentState,
+}: ValueLinksProps) {
+  const conversionLinks = [
+    {
+      href: `/salary/${amount}/to-hourly`,
+      title: "Salary to hourly",
+      description: "See the hourly rate for this yearly salary.",
+    },
+    {
+      href: `/salary/${amount}/monthly`,
+      title: "Salary to monthly",
+      description: "Break annual salary into monthly income.",
+    },
+    {
+      href: `/salary/${amount}/biweekly`,
+      title: "Salary to biweekly",
+      description: "Estimate each paycheck on a biweekly schedule.",
+    },
+    {
+      href: `/salary/${amount}/after-tax`,
+      title: "After-tax overview",
+      description: "Compare take-home pay by state.",
+    },
+  ];
+
+  const otherStates =
+    type === "salary-after-tax"
+      ? STATES.filter((state) => state.slug !== currentState)
+      : [];
+
+  return (
+    <div className="space-y-8">
+      <section>
+        <h2 className="text-2xl font-semibold">Explore more salary pages</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-400">
+          Use these related pages to compare gross pay, paycheck timing, and
+          take-home estimates.
+        </p>
+
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          {conversionLinks.map((link) => (
+            <ConversionCard
+              key={link.href}
+              href={link.href}
+              title={link.title}
+              description={link.description}
+            />
+          ))}
+        </div>
+      </section>
+
+      {type === "salary-after-tax" && otherStates.length > 0 && (
+        <section>
+          <h2 className="text-xl font-semibold">
+            Compare take-home pay in other states
+          </h2>
+
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {otherStates.map((state) => (
+              <StatePill
                 key={state.slug}
                 href={`/salary/${amount}/after-tax/${state.slug}`}
-                className="rounded-xl border border-neutral-800 bg-neutral-950/60 px-4 py-3 text-sm text-neutral-300 transition hover:border-neutral-700 hover:bg-neutral-950 hover:text-white"
-              >
-                {state.name}
-              </Link>
+                label={state.shortName || state.name}
+              />
             ))}
           </div>
-        </div>
+        </section>
       )}
     </div>
   );
