@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
@@ -16,15 +18,7 @@ const SITE_URL = "https://mysalarycalculator.co";
 
 type PageProps = {
   params: Promise<{ amount: string }>;
-};
-
-export function generateStaticParams() {
-  const params = [];
-  for (let amount = 10000; amount <= 300000; amount += 1000) {
-    params.push({ amount: String(amount) });
-  }
-  return params;
-}
+;
 
 export async function generateMetadata({
   params,
