@@ -91,19 +91,6 @@ a {
     @apply rounded-3xl p-7 md:p-9;
   }
 
-  .page-identity {
-    @apply inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em];
-    color: rgb(var(--accent-rgb) / 0.96);
-    border-color: rgb(var(--accent-rgb) / 0.3);
-    background: linear-gradient(180deg, rgb(var(--accent-rgb) / 0.18), rgb(var(--accent-rgb) / 0.06));
-  }
-
-  .section-title {
-    @apply text-lg font-semibold uppercase tracking-[0.12em] text-neutral-200 md:text-xl;
-    text-wrap: balance;
-    letter-spacing: 0.11em;
-  }
-
   .result-card {
     background:
       linear-gradient(180deg, rgb(var(--accent-rgb) / 0.12), rgb(var(--accent-rgb) / 0.02) 38%, transparent 100%),
@@ -118,21 +105,6 @@ a {
     border: 1px solid var(--border-soft);
     box-shadow: var(--shadow-md);
     @apply rounded-2xl p-6;
-  }
-
-  .metric-label {
-    @apply text-sm uppercase tracking-[0.11em] text-neutral-300;
-  }
-
-  .metric-value {
-    @apply mt-2 text-3xl font-semibold text-white md:text-4xl;
-    font-variant-numeric: tabular-nums lining-nums;
-    letter-spacing: -0.02em;
-  }
-
-  .metric-value-primary {
-    @apply text-4xl md:text-5xl;
-    letter-spacing: -0.03em;
   }
 
   .section-card {
