@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import LinkCard from "@/components/LinkCard";
 
 export const metadata: Metadata = {
   title:
@@ -41,20 +41,6 @@ const afterTaxExamples = [
   },
 ];
 
-function LinkCard({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link href={href} className="subtle-link-card block text-sm text-neutral-100">
-      {children}
-    </Link>
-  );
-}
-
 export default function HomePage() {
   return (
     <main className="ambient-top ambient-bottom min-h-screen">
@@ -79,8 +65,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="mt-8 grid gap-6 md:grid-cols-2">
-          <div className="glass-card p-6">
+        <section className="gap-sections grid gap-6 md:grid-cols-2">
+          <div className="section-card">
             <h2 className="text-2xl font-semibold">Hourly to salary</h2>
             <p className="mt-2 text-neutral-300">
               See what an hourly wage looks like per year, month, and paycheck.
@@ -95,7 +81,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="glass-card p-6">
+          <div className="section-card">
             <h2 className="text-2xl font-semibold">Salary to hourly</h2>
             <p className="mt-2 text-neutral-300">
               Convert annual salary into hourly pay and compare earnings.
@@ -111,7 +97,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="glass-card mt-8 p-6">
+        <section className="gap-sections section-card">
           <h2 className="text-2xl font-semibold">After-tax pay by state</h2>
           <p className="mt-2 text-neutral-300">
             Estimate take-home pay after federal and state taxes.
