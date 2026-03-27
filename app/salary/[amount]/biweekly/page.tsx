@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import SalaryPageHero from "@/components/SalaryPageHero";
 import SiteShell from "@/components/SiteShell";
 import ValueLinks from "@/components/ValueLinks";
 import {
@@ -113,89 +114,77 @@ export default async function SalaryToBiweeklyPage({ params }: PageProps) {
       <JsonLd data={faqJsonLd} />
 
       <SiteShell>
-        <div className="mb-8 text-sm text-neutral-400">
-          <Link href="/" className="hover:text-white">
-            Home
-          </Link>
-          <span className="mx-2">/</span>
-          <span>Salary to Biweekly</span>
-        </div>
-
-        <section className="rounded-2xl border border-neutral-800 bg-neutral-900 p-8 shadow-sm">
-          <h1 className="text-3xl font-bold tracking-tight md:text-5xl">
-            {salaryLabel} a Year is How Much Every 2 Weeks?
-          </h1>
-
-          <p className="mt-4 max-w-3xl text-lg text-neutral-300">
-            A salary of <strong>{salaryLabel}</strong> per year works out to
-            about <strong>{biweeklyLabel} every two weeks</strong> before taxes.
-          </p>
-        </section>
-
-        <section className="mt-8 grid gap-4 md:grid-cols-3">
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 shadow-sm">
-            <p className="text-sm text-neutral-400">Biweekly pay</p>
-            <p className="mt-2 text-3xl font-semibold">{biweeklyLabel}</p>
+        <main className="shell">
+          <div className="mb-8 text-sm text-neutral-400">
+            <Link href="/" className="hover:text-white">
+              Home
+            </Link>
+            <span className="mx-2">/</span>
+            <span>Salary to Biweekly</span>
           </div>
 
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 shadow-sm">
-            <p className="text-sm text-neutral-400">Monthly pay</p>
-            <p className="mt-2 text-3xl font-semibold">{monthlyLabel}</p>
-          </div>
+          <SalaryPageHero
+            title={`${salaryLabel} a Year is How Much Every 2 Weeks?`}
+            description={
+              <>
+                A salary of <strong>{salaryLabel}</strong> per year works out
+                to about <strong>{biweeklyLabel} every two weeks</strong> before
+                taxes.
+              </>
+            }
+          />
 
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 shadow-sm">
-            <p className="text-sm text-neutral-400">Hourly pay</p>
-            <p className="mt-2 text-3xl font-semibold">{hourlyLabel}</p>
-          </div>
-        </section>
+          <section className="gap-sections grid gap-4 md:grid-cols-3">
+            <div className="result-card">
+              <p className="text-sm text-neutral-300">Biweekly pay</p>
+              <p className="mt-2 text-4xl font-semibold md:text-5xl">
+                {biweeklyLabel}
+              </p>
+            </div>
 
-        <section className="mt-8 grid gap-6 lg:grid-cols-[1.4fr_0.9fr]">
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 shadow-sm">
-            <h2 className="text-2xl font-semibold">Salary to biweekly breakdown</h2>
+            <div className="metric-card">
+              <p className="text-sm text-neutral-400">Monthly pay</p>
+              <p className="mt-2 text-3xl font-semibold">{monthlyLabel}</p>
+            </div>
 
-            <div className="mt-6 overflow-hidden rounded-xl border border-neutral-800">
-              <div className="grid grid-cols-2 border-b border-neutral-800 bg-neutral-950/60">
-                <div className="px-4 py-3 text-sm font-medium text-neutral-300">
-                  Conversion
-                </div>
-                <div className="px-4 py-3 text-sm font-medium text-neutral-300">
-                  Amount
-                </div>
-              </div>
+            <div className="metric-card">
+              <p className="text-sm text-neutral-400">Hourly pay</p>
+              <p className="mt-2 text-3xl font-semibold">{hourlyLabel}</p>
+            </div>
+          </section>
 
-              <div className="grid grid-cols-2 border-b border-neutral-800">
-                <div className="px-4 py-3 text-sm text-neutral-400">
-                  {salaryLabel} per year
-                </div>
-                <div className="px-4 py-3 text-sm font-medium">
-                  {biweeklyLabel} every 2 weeks
-                </div>
-              </div>
+          <section className="gap-sections grid gap-6 lg:grid-cols-[1.4fr_0.9fr]">
+            <div className="section-card">
+              <h2 className="text-2xl font-semibold">Salary to biweekly breakdown</h2>
 
-              <div className="grid grid-cols-2 border-b border-neutral-800">
-                <div className="px-4 py-3 text-sm text-neutral-400">
-                  Per month
+              <div className="table-wrap">
+                <div className="table-head">
+                  <div className="table-head-cell">Conversion</div>
+                  <div className="table-head-cell">Amount</div>
                 </div>
-                <div className="px-4 py-3 text-sm font-medium">
-                  {monthlyLabel}
-                </div>
-              </div>
 
-              <div className="grid grid-cols-2">
-                <div className="px-4 py-3 text-sm text-neutral-400">
-                  Per hour
+                <div className="table-row">
+                  <div className="table-cell-label">{salaryLabel} per year</div>
+                  <div className="table-cell-value">{biweeklyLabel} every 2 weeks</div>
                 </div>
-                <div className="px-4 py-3 text-sm font-medium">
-                  {hourlyLabel}
+
+                <div className="table-row">
+                  <div className="table-cell-label">Per month</div>
+                  <div className="table-cell-value">{monthlyLabel}</div>
+                </div>
+
+                <div className="table-row">
+                  <div className="table-cell-label">Per hour</div>
+                  <div className="table-cell-value">{hourlyLabel}</div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 shadow-sm">
-            <ValueLinks amount={amount} />
-          </div>
-        </section>
+            <div className="section-card">
+              <ValueLinks amount={amount} />
+            </div>
+          </section>
+        </main>
       </SiteShell>
     </>
   );

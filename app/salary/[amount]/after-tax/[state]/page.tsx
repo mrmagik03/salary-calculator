@@ -3,10 +3,12 @@ export const dynamic = "force-dynamic";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import SalaryPageHero from "@/components/SalaryPageHero";
 import SiteShell from "@/components/SiteShell";
 import ValueLinks from "@/components/ValueLinks";
 import { clampSalaryForSeo, formatCurrency, toNumber } from "@/lib/pay";
-import { STATES, getStateBySlug } from "@/lib/states";
+import { getThemeByStateSlug, themeToCssVars } from "@/lib/stateThemes";
+import { getStateBySlug } from "@/lib/states";
 
 const SITE_URL = "https://mysalarycalculator.co";
 
@@ -54,7 +56,9 @@ export default async function AfterTaxStatePage({ params }: PageProps) {
   if (!state) {
     return (
       <SiteShell>
-        <p className="text-neutral-300">State not found.</p>
+        <main className="shell">
+          <p className="text-neutral-300">State not found.</p>
+        </main>
       </SiteShell>
     );
   }
@@ -66,6 +70,7 @@ export default async function AfterTaxStatePage({ params }: PageProps) {
   const monthlyLabel = formatCurrency(net / 12);
   const biweeklyLabel = formatCurrency(net / 26);
   const hourlyLabel = formatCurrency(net / 2080);
+  const stateTheme = themeToCssVars(getThemeByStateSlug(state.slug));
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -112,118 +117,100 @@ export default async function AfterTaxStatePage({ params }: PageProps) {
       <JsonLd data={breadcrumbJsonLd} />
       <JsonLd data={faqJsonLd} />
 
-      <SiteShell>
-        <div className="mb-8 text-sm text-neutral-400">
-          <Link href="/" className="hover:text-white">
-            Home
-          </Link>
-          <span className="mx-2">/</span>
-          <Link
-            href={`/salary/${amount}/after-tax`}
-            className="hover:text-white"
-          >
-            After Tax
-          </Link>
-          <span className="mx-2">/</span>
-          <span>{state.name}</span>
-        </div>
-
-        <section className="rounded-2xl border border-neutral-800 bg-neutral-900 p-8 shadow-sm">
-          <h1 className="text-3xl font-bold tracking-tight md:text-5xl">
-            {salaryLabel} After Tax in {state.name}
-          </h1>
-
-          <p className="mt-4 max-w-3xl text-lg text-neutral-300">
-            If you earn <strong>{salaryLabel}</strong> per year in{" "}
-            <strong>{state.name}</strong>, your estimated take-home pay is about{" "}
-            <strong>{netLabel}</strong> annually after federal and state taxes.
-          </p>
-        </section>
-
-        <section className="mt-8 grid gap-4 md:grid-cols-4">
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 shadow-sm">
-            <p className="text-sm text-neutral-400">Net yearly pay</p>
-            <p className="mt-2 text-3xl font-semibold">{netLabel}</p>
+      <SiteShell theme={stateTheme}>
+        <main className="shell">
+          <div className="mb-8 text-sm text-neutral-400">
+            <Link href="/" className="hover:text-white">
+              Home
+            </Link>
+            <span className="mx-2">/</span>
+            <Link
+              href={`/salary/${amount}/after-tax`}
+              className="hover:text-white"
+            >
+              After Tax
+            </Link>
+            <span className="mx-2">/</span>
+            <span>{state.name}</span>
           </div>
 
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 shadow-sm">
-            <p className="text-sm text-neutral-400">Monthly take-home</p>
-            <p className="mt-2 text-3xl font-semibold">{monthlyLabel}</p>
-          </div>
+          <SalaryPageHero
+            title={`${salaryLabel} After Tax in ${state.name}`}
+            description={
+              <>
+                If you earn <strong>{salaryLabel}</strong> per year in{" "}
+                <strong>{state.name}</strong>, your estimated take-home pay is
+                about <strong>{netLabel}</strong> annually after federal and
+                state taxes.
+              </>
+            }
+          />
 
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 shadow-sm">
-            <p className="text-sm text-neutral-400">Biweekly take-home</p>
-            <p className="mt-2 text-3xl font-semibold">{biweeklyLabel}</p>
-          </div>
+          <section className="gap-sections grid gap-4 md:grid-cols-4">
+            <div className="result-card">
+              <p className="text-sm text-neutral-300">Net yearly pay</p>
+              <p className="mt-2 text-4xl font-semibold md:text-5xl">{netLabel}</p>
+            </div>
 
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 shadow-sm">
-            <p className="text-sm text-neutral-400">Hourly take-home</p>
-            <p className="mt-2 text-3xl font-semibold">{hourlyLabel}</p>
-          </div>
-        </section>
+            <div className="metric-card">
+              <p className="text-sm text-neutral-400">Monthly take-home</p>
+              <p className="mt-2 text-3xl font-semibold">{monthlyLabel}</p>
+            </div>
 
-        <section className="mt-8 grid gap-6 lg:grid-cols-[1.4fr_0.9fr]">
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 shadow-sm">
-            <h2 className="text-2xl font-semibold">
-              Tax breakdown in {state.name}
-            </h2>
+            <div className="metric-card">
+              <p className="text-sm text-neutral-400">Biweekly take-home</p>
+              <p className="mt-2 text-3xl font-semibold">{biweeklyLabel}</p>
+            </div>
 
-            <div className="mt-6 overflow-hidden rounded-xl border border-neutral-800">
-              <div className="grid grid-cols-2 border-b border-neutral-800 bg-neutral-950/60">
-                <div className="px-4 py-3 text-sm font-medium text-neutral-300">
-                  Category
-                </div>
-                <div className="px-4 py-3 text-sm font-medium text-neutral-300">
-                  Amount
-                </div>
-              </div>
+            <div className="metric-card">
+              <p className="text-sm text-neutral-400">Hourly take-home</p>
+              <p className="mt-2 text-3xl font-semibold">{hourlyLabel}</p>
+            </div>
+          </section>
 
-              <div className="grid grid-cols-2 border-b border-neutral-800">
-                <div className="px-4 py-3 text-sm text-neutral-400">
-                  Gross salary
-                </div>
-                <div className="px-4 py-3 text-sm font-medium">
-                  {salaryLabel}
-                </div>
-              </div>
+          <section className="gap-sections grid gap-6 lg:grid-cols-[1.4fr_0.9fr]">
+            <div className="section-card">
+              <h2 className="text-2xl font-semibold">
+                Tax breakdown in {state.name}
+              </h2>
 
-              <div className="grid grid-cols-2 border-b border-neutral-800">
-                <div className="px-4 py-3 text-sm text-neutral-400">
-                  Estimated federal tax
+              <div className="table-wrap">
+                <div className="table-head">
+                  <div className="table-head-cell">Category</div>
+                  <div className="table-head-cell">Amount</div>
                 </div>
-                <div className="px-4 py-3 text-sm font-medium">
-                  {formatCurrency(federal)}
-                </div>
-              </div>
 
-              <div className="grid grid-cols-2 border-b border-neutral-800">
-                <div className="px-4 py-3 text-sm text-neutral-400">
-                  Estimated state tax
+                <div className="table-row">
+                  <div className="table-cell-label">Gross salary</div>
+                  <div className="table-cell-value">{salaryLabel}</div>
                 </div>
-                <div className="px-4 py-3 text-sm font-medium">
-                  {formatCurrency(stateTax)}
-                </div>
-              </div>
 
-              <div className="grid grid-cols-2">
-                <div className="px-4 py-3 text-sm text-neutral-400">
-                  Estimated net income
+                <div className="table-row">
+                  <div className="table-cell-label">Estimated federal tax</div>
+                  <div className="table-cell-value">{formatCurrency(federal)}</div>
                 </div>
-                <div className="px-4 py-3 text-sm font-medium">
-                  {netLabel}
+
+                <div className="table-row">
+                  <div className="table-cell-label">Estimated state tax</div>
+                  <div className="table-cell-value">{formatCurrency(stateTax)}</div>
+                </div>
+
+                <div className="table-row">
+                  <div className="table-cell-label">Estimated net income</div>
+                  <div className="table-cell-value">{netLabel}</div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 shadow-sm">
-            <ValueLinks
-              amount={amount}
-              type="salary-after-tax"
-              currentState={state.slug}
-            />
-          </div>
-        </section>
+            <div className="section-card">
+              <ValueLinks
+                amount={amount}
+                type="salary-after-tax"
+                currentState={state.slug}
+              />
+            </div>
+          </section>
+        </main>
       </SiteShell>
     </>
   );
