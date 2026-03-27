@@ -4,6 +4,7 @@ import JsonLd from "@/components/JsonLd";
 import SalaryPageHero from "@/components/SalaryPageHero";
 import SiteShell from "@/components/SiteShell";
 import LinkCard from "@/components/LinkCard";
+import { PAGE_IDENTITY_LABELS, getPageTheme } from "@/lib/pageThemes";
 import {
   annualSalaryToBiweekly,
   annualSalaryToMonthly,
@@ -50,7 +51,7 @@ export default async function HourlyToSalaryPage({ params }: PageProps) {
   };
 
   return (
-    <SiteShell>
+    <SiteShell theme={getPageTheme("hourly-salary")}>
       <JsonLd data={faqJsonLd} />
       <main className="shell">
         <div className="mb-8 text-sm text-neutral-400">

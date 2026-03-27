@@ -98,7 +98,7 @@ export default function ValueLinks({
   return (
     <div className="space-y-10">
       <section>
-        <h2 className="text-2xl font-semibold">Explore more salary pages</h2>
+        <h2 className="section-title">Explore more salary pages</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-400">
           Use these related pages to compare gross pay, paycheck timing, and
           take-home estimates.
@@ -118,7 +118,7 @@ export default function ValueLinks({
 
       {type === "salary-after-tax" && otherStates.length > 0 && (
         <section>
-          <h2 className="text-xl font-semibold">
+          <h2 className="section-title">
             Compare take-home pay in other states
           </h2>
 

@@ -5,6 +5,7 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import SalaryPageHero from "@/components/SalaryPageHero";
 import SiteShell from "@/components/SiteShell";
+import { PAGE_IDENTITY_LABELS, getPageTheme } from "@/lib/pageThemes";
 import { clampSalaryForSeo, formatCurrency, toNumber } from "@/lib/pay";
 import { STATES } from "@/lib/states";
 

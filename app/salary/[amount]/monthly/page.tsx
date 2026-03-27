@@ -6,6 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import SalaryPageHero from "@/components/SalaryPageHero";
 import SiteShell from "@/components/SiteShell";
 import ValueLinks from "@/components/ValueLinks";
+import { PAGE_IDENTITY_LABELS, getPageTheme } from "@/lib/pageThemes";
 import {
   annualSalaryToBiweekly,
   annualSalaryToHourly,
