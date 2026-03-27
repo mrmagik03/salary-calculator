@@ -1,0 +1,123 @@
+import type { CSSProperties } from "react";
+
+export type PageThemeType =
+  | "salary-hourly"
+  | "hourly-salary"
+  | "salary-monthly"
+  | "salary-biweekly"
+  | "after-tax";
+
+const PAGE_THEMES: Record<PageThemeType, CSSProperties> = {
+  "salary-hourly": {
+    "--accent-rgb": "96 165 250",
+    "--accent-alt-rgb": "99 102 241",
+    "--accent-soft-rgb": "56 189 248",
+    "--bg-top": "#0b1220",
+    "--bg-mid": "#091121",
+    "--bg-bottom": "#050a14",
+    "--glow-main-x": "11%",
+    "--glow-main-y": "-6%",
+    "--glow-main-size": "58% 36%",
+    "--glow-main-opacity": "0.16",
+    "--glow-alt-x": "82%",
+    "--glow-alt-y": "4%",
+    "--glow-alt-size": "42% 30%",
+    "--glow-alt-opacity": "0.12",
+    "--hero-highlight-opacity": "0.08",
+    "--scene-separation": "0.2",
+    "--glow-strength": "1.05",
+    "--base-brightness": "0.03",
+  } as CSSProperties,
+  "hourly-salary": {
+    "--accent-rgb": "14 165 233",
+    "--accent-alt-rgb": "59 130 246",
+    "--accent-soft-rgb": "6 182 212",
+    "--bg-top": "#0a1322",
+    "--bg-mid": "#071120",
+    "--bg-bottom": "#040a15",
+    "--glow-main-x": "6%",
+    "--glow-main-y": "-8%",
+    "--glow-main-size": "62% 38%",
+    "--glow-main-opacity": "0.18",
+    "--glow-alt-x": "80%",
+    "--glow-alt-y": "8%",
+    "--glow-alt-size": "38% 26%",
+    "--glow-alt-opacity": "0.1",
+    "--hero-highlight-opacity": "0.1",
+    "--scene-separation": "0.22",
+    "--glow-strength": "1.1",
+    "--base-brightness": "0.035",
+  } as CSSProperties,
+  "salary-monthly": {
+    "--accent-rgb": "129 140 248",
+    "--accent-alt-rgb": "45 212 191",
+    "--accent-soft-rgb": "99 102 241",
+    "--bg-top": "#101526",
+    "--bg-mid": "#0b1220",
+    "--bg-bottom": "#080d19",
+    "--glow-main-x": "50%",
+    "--glow-main-y": "-10%",
+    "--glow-main-size": "68% 38%",
+    "--glow-main-opacity": "0.12",
+    "--glow-alt-x": "68%",
+    "--glow-alt-y": "10%",
+    "--glow-alt-size": "40% 28%",
+    "--glow-alt-opacity": "0.08",
+    "--hero-highlight-opacity": "0.06",
+    "--scene-separation": "0.19",
+    "--glow-strength": "0.92",
+    "--base-brightness": "0.024",
+  } as CSSProperties,
+  "salary-biweekly": {
+    "--accent-rgb": "251 146 60",
+    "--accent-alt-rgb": "244 63 94",
+    "--accent-soft-rgb": "249 115 22",
+    "--bg-top": "#14101e",
+    "--bg-mid": "#110a18",
+    "--bg-bottom": "#09060f",
+    "--glow-main-x": "8%",
+    "--glow-main-y": "22%",
+    "--glow-main-size": "45% 42%",
+    "--glow-main-opacity": "0.16",
+    "--glow-alt-x": "92%",
+    "--glow-alt-y": "24%",
+    "--glow-alt-size": "44% 38%",
+    "--glow-alt-opacity": "0.14",
+    "--hero-highlight-opacity": "0.09",
+    "--scene-separation": "0.24",
+    "--glow-strength": "1.05",
+    "--base-brightness": "0.028",
+  } as CSSProperties,
+  "after-tax": {
+    "--accent-rgb": "20 184 166",
+    "--accent-alt-rgb": "59 130 246",
+    "--accent-soft-rgb": "15 118 110",
+    "--bg-top": "#081018",
+    "--bg-mid": "#070c14",
+    "--bg-bottom": "#04070d",
+    "--glow-main-x": "46%",
+    "--glow-main-y": "110%",
+    "--glow-main-size": "64% 38%",
+    "--glow-main-opacity": "0.09",
+    "--glow-alt-x": "86%",
+    "--glow-alt-y": "94%",
+    "--glow-alt-size": "36% 26%",
+    "--glow-alt-opacity": "0.06",
+    "--hero-highlight-opacity": "0.04",
+    "--scene-separation": "0.26",
+    "--glow-strength": "0.78",
+    "--base-brightness": "0.012",
+  } as CSSProperties,
+};
+
+export const PAGE_IDENTITY_LABELS: Record<PageThemeType, string> = {
+  "salary-hourly": "Salary to Hourly",
+  "hourly-salary": "Hourly to Salary",
+  "salary-monthly": "Salary to Monthly",
+  "salary-biweekly": "Salary to Biweekly",
+  "after-tax": "After-Tax by State",
+};
+
+export function getPageTheme(type: PageThemeType): CSSProperties {
+  return PAGE_THEMES[type];
+}

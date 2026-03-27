@@ -41,12 +41,9 @@ function ConversionCard({
   description: string;
 }) {
   return (
-    <Link
-      href={href}
-      className="block rounded-xl border border-neutral-800 bg-neutral-950/60 p-4 transition hover:border-neutral-700 hover:bg-neutral-950"
-    >
+    <Link href={href} className="tile-link p-4">
       <div className="text-sm font-semibold leading-5 text-white">{title}</div>
-      <p className="mt-2 text-xs leading-5 text-neutral-400">{description}</p>
+      <p className="mt-2 text-xs leading-5 text-neutral-300">{description}</p>
     </Link>
   );
 }
@@ -59,11 +56,7 @@ function StatePill({
   label: string;
 }) {
   return (
-    <Link
-      href={href}
-      className="flex min-h-[44px] items-center justify-center rounded-lg border border-neutral-800 bg-neutral-950/60 px-3 py-2 text-center text-xs font-medium leading-4 text-neutral-200 transition hover:border-neutral-700 hover:bg-neutral-950"
-      title={label}
-    >
+    <Link href={href} className="pill-link" title={label}>
       <span>{label}</span>
     </Link>
   );
@@ -103,9 +96,9 @@ export default function ValueLinks({
       : [];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       <section>
-        <h2 className="text-2xl font-semibold">Explore more salary pages</h2>
+        <h2 className="section-title">Explore more salary pages</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-400">
           Use these related pages to compare gross pay, paycheck timing, and
           take-home estimates.
@@ -125,7 +118,7 @@ export default function ValueLinks({
 
       {type === "salary-after-tax" && otherStates.length > 0 && (
         <section>
-          <h2 className="text-xl font-semibold">
+          <h2 className="section-title">
             Compare take-home pay in other states
           </h2>
 
