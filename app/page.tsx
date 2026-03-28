@@ -56,9 +56,10 @@ export default function HomePage() {
             breakdowns, and search-friendly pay comparisons.
           </p>
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            <LinkCard href="/hourly/25/to-salary">Hourly to salary</LinkCard>
-            <LinkCard href="/salary/60000/to-hourly">Salary to hourly</LinkCard>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <LinkCard href="/hourly/25/to-salary">Hourly</LinkCard>
+            <LinkCard href="/salary/60000/monthly">Monthly</LinkCard>
+            <LinkCard href="/salary/60000/biweekly">Biweekly</LinkCard>
             <LinkCard href="/salary/60000/after-tax/texas">
               After-tax calculator
             </LinkCard>
@@ -93,6 +94,8 @@ export default function HomePage() {
                   {item.label}
                 </LinkCard>
               ))}
+              <LinkCard href="/salary/60000/monthly">$60,000 to monthly</LinkCard>
+              <LinkCard href="/salary/60000/biweekly">$60,000 to biweekly</LinkCard>
             </div>
           </div>
         </section>
