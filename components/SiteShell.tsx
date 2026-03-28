@@ -25,16 +25,16 @@ export default function SiteShell({
             className="flex gap-4 text-sm text-neutral-200"
             aria-label="Primary site navigation"
           >
-            <Link href="/salary/60000/to-hourly" className="text-link">
+            <Link href="/salary/60000/to-hourly">
               Salary
             </Link>
-            <Link href="/hourly/25/to-salary" className="text-link">
+            <Link href="/hourly/25/to-salary">
               Hourly
             </Link>
-            <Link href="/salary/60000/biweekly" className="text-link">
+            <Link href="/salary/60000/biweekly">
               Biweekly
             </Link>
-            <Link href="/salary/60000/after-tax" className="text-link">
+            <Link href="/salary/60000/after-tax">
               After Tax
             </Link>
           </nav>
@@ -50,7 +50,6 @@ export default function SiteShell({
             If you are planning a loan or comparing monthly bills, visit{" "}
             <a
               href="https://monthlypaymentcalc.co"
-              className="text-link"
               target="_blank"
               rel="noreferrer"
             >

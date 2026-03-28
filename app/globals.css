@@ -205,18 +205,6 @@ textarea:focus:not(:focus-visible),
     color: var(--muted);
   }
 
-  .text-link {
-    color: var(--link);
-    text-decoration: underline;
-    text-decoration-color: rgb(191 219 254 / 0.7);
-    text-underline-offset: 0.18em;
-  }
-
-  .text-link:hover {
-    color: var(--link-hover);
-    text-decoration-color: rgb(219 234 254 / 0.95);
-  }
-
   .skip-link {
     @apply absolute left-4 top-4 z-50 rounded-md px-4 py-2 text-sm font-semibold;
     background: #0f172a;
