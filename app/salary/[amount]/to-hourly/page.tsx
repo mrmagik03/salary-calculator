@@ -114,7 +114,7 @@ export default async function SalaryToHourlyPage({ params }: PageProps) {
       <JsonLd data={breadcrumbJsonLd} />
       <JsonLd data={faqJsonLd} />
 
-      <SiteShell theme={getPageTheme("salary-hourly")}>
+      <SiteShell>
         <main className="shell">
           <div className="mb-8 text-sm text-neutral-400">
             <Link href="/" className="hover:text-white">
@@ -125,7 +125,6 @@ export default async function SalaryToHourlyPage({ params }: PageProps) {
           </div>
 
           <SalaryPageHero
-            marker={PAGE_IDENTITY_LABELS["salary-hourly"]}
             title={`${salaryLabel} a Year is How Much an Hour?`}
             description={
               <>
@@ -137,24 +136,26 @@ export default async function SalaryToHourlyPage({ params }: PageProps) {
 
           <section className="gap-sections grid gap-4 md:grid-cols-3">
             <div className="result-card">
-              <p className="metric-label">Hourly pay</p>
-              <p className="metric-value metric-value-primary">{hourlyLabel}</p>
+              <p className="text-sm text-neutral-300">Hourly pay</p>
+              <p className="mt-2 text-4xl font-semibold md:text-5xl">
+                {hourlyLabel}
+              </p>
             </div>
 
             <div className="metric-card">
-              <p className="metric-label">Monthly pay</p>
-              <p className="metric-value">{monthlyLabel}</p>
+              <p className="text-sm text-neutral-400">Monthly pay</p>
+              <p className="mt-2 text-3xl font-semibold">{monthlyLabel}</p>
             </div>
 
             <div className="metric-card">
-              <p className="metric-label">Biweekly pay</p>
-              <p className="metric-value">{biweeklyLabel}</p>
+              <p className="text-sm text-neutral-400">Biweekly pay</p>
+              <p className="mt-2 text-3xl font-semibold">{biweeklyLabel}</p>
             </div>
           </section>
 
           <section className="gap-sections grid gap-6 lg:grid-cols-[1.4fr_0.9fr]">
             <div className="section-card">
-              <h2 className="section-title">Salary to hourly breakdown</h2>
+              <h2 className="text-2xl font-semibold">Salary to hourly breakdown</h2>
 
               <div className="table-wrap">
                 <div className="table-head">

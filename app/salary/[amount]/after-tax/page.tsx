@@ -61,7 +61,7 @@ export default async function AfterTaxHubPage({ params }: PageProps) {
     <>
       <JsonLd data={breadcrumbJsonLd} />
 
-      <SiteShell theme={getPageTheme("after-tax")}>
+      <SiteShell>
         <main className="shell">
           <div className="mb-8 text-sm text-neutral-400">
             <Link href="/" className="hover:text-white">
@@ -72,7 +72,6 @@ export default async function AfterTaxHubPage({ params }: PageProps) {
           </div>
 
           <SalaryPageHero
-            marker={PAGE_IDENTITY_LABELS["after-tax"]}
             title={`${salaryLabel} Salary After Tax by State`}
             description={
               <>
@@ -83,7 +82,7 @@ export default async function AfterTaxHubPage({ params }: PageProps) {
           />
 
           <section className="gap-sections section-card">
-            <h2 className="section-title">Choose a state</h2>
+            <h2 className="text-2xl font-semibold">Choose a state</h2>
 
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
               {STATES.map((state) => (

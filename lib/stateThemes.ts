@@ -11,22 +11,22 @@ const DEFAULT_THEME: AccentTheme = {
 };
 
 const STATE_THEME_MAP: Record<string, AccentTheme> = {
-  arizona: { accentRgb: "167 47 27", accentAltRgb: "251 146 60", accentSoftRgb: "245 158 11" },
-  california: { accentRgb: "153 27 27", accentAltRgb: "202 138 4", accentSoftRgb: "234 179 8" },
-  colorado: { accentRgb: "17 24 39", accentAltRgb: "202 138 4", accentSoftRgb: "245 158 11" },
-  florida: { accentRgb: "37 99 235", accentAltRgb: "249 115 22", accentSoftRgb: "59 130 246" },
-  georgia: { accentRgb: "185 28 28", accentAltRgb: "15 23 42", accentSoftRgb: "239 68 68" },
-  illinois: { accentRgb: "30 64 175", accentAltRgb: "234 88 12", accentSoftRgb: "37 99 235" },
-  massachusetts: { accentRgb: "134 25 143", accentAltRgb: "59 130 246", accentSoftRgb: "168 85 247" },
-  michigan: { accentRgb: "29 78 216", accentAltRgb: "234 179 8", accentSoftRgb: "245 158 11" },
-  "new-jersey": { accentRgb: "178 34 34", accentAltRgb: "245 158 11", accentSoftRgb: "239 68 68" },
-  "new-york": { accentRgb: "30 41 59", accentAltRgb: "249 115 22", accentSoftRgb: "59 130 246" },
-  "north-carolina": { accentRgb: "14 116 144", accentAltRgb: "75 85 99", accentSoftRgb: "56 189 248" },
-  ohio: { accentRgb: "153 27 27", accentAltRgb: "55 65 81", accentSoftRgb: "239 68 68" },
-  pennsylvania: { accentRgb: "67 56 202", accentAltRgb: "22 163 74", accentSoftRgb: "99 102 241" },
-  texas: { accentRgb: "194 65 12", accentAltRgb: "245 245 220", accentSoftRgb: "251 146 60" },
-  virginia: { accentRgb: "245 158 11", accentAltRgb: "30 64 175", accentSoftRgb: "249 115 22" },
-  washington: { accentRgb: "79 70 229", accentAltRgb: "148 163 184", accentSoftRgb: "129 140 248" },
+  arizona: { accentRgb: "249 115 22", accentAltRgb: "245 158 11", accentSoftRgb: "234 88 12" },
+  california: { accentRgb: "59 130 246", accentAltRgb: "99 102 241", accentSoftRgb: "14 165 233" },
+  colorado: { accentRgb: "220 38 38", accentAltRgb: "37 99 235", accentSoftRgb: "147 51 234" },
+  florida: { accentRgb: "14 165 233", accentAltRgb: "34 197 94", accentSoftRgb: "59 130 246" },
+  georgia: { accentRgb: "239 68 68", accentAltRgb: "249 115 22", accentSoftRgb: "190 24 93" },
+  illinois: { accentRgb: "37 99 235", accentAltRgb: "239 68 68", accentSoftRgb: "29 78 216" },
+  massachusetts: { accentRgb: "99 102 241", accentAltRgb: "59 130 246", accentSoftRgb: "67 56 202" },
+  michigan: { accentRgb: "14 116 144", accentAltRgb: "59 130 246", accentSoftRgb: "37 99 235" },
+  "new-jersey": { accentRgb: "245 158 11", accentAltRgb: "59 130 246", accentSoftRgb: "249 115 22" },
+  "new-york": { accentRgb: "59 130 246", accentAltRgb: "245 158 11", accentSoftRgb: "14 165 233" },
+  "north-carolina": { accentRgb: "56 189 248", accentAltRgb: "37 99 235", accentSoftRgb: "59 130 246" },
+  ohio: { accentRgb: "220 38 38", accentAltRgb: "59 130 246", accentSoftRgb: "239 68 68" },
+  pennsylvania: { accentRgb: "29 78 216", accentAltRgb: "220 38 38", accentSoftRgb: "59 130 246" },
+  texas: { accentRgb: "59 130 246", accentAltRgb: "220 38 38", accentSoftRgb: "147 51 234" },
+  virginia: { accentRgb: "14 116 144", accentAltRgb: "245 158 11", accentSoftRgb: "37 99 235" },
+  washington: { accentRgb: "34 197 94", accentAltRgb: "16 185 129", accentSoftRgb: "14 165 233" },
 };
 
 export function getThemeByStateSlug(slug?: string): AccentTheme {
