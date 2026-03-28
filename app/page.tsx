@@ -43,7 +43,7 @@ const afterTaxExamples = [
 
 export default function HomePage() {
   return (
-    <main className="ambient-top ambient-bottom min-h-screen">
+    <main id="main-content" className="ambient-top ambient-bottom min-h-screen">
       <div className="shell">
         <section className="hero-card">
           <h1 className="text-3xl font-bold tracking-tight md:text-5xl">
