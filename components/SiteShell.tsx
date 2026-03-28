@@ -18,6 +18,7 @@ export default function SiteShell({
           <nav className="flex gap-4 text-sm text-neutral-300">
             <Link href="/salary/60000/to-hourly" className="hover:text-white">Salary</Link>
             <Link href="/hourly/25/to-salary" className="hover:text-white">Hourly</Link>
+            <Link href="/salary/60000/biweekly" className="hover:text-white">Biweekly</Link>
             <Link href="/salary/60000/after-tax" className="hover:text-white">After Tax</Link>
           </nav>
         </div>
