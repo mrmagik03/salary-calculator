@@ -63,7 +63,6 @@ export default async function HourlyToSalaryPage({ params }: PageProps) {
         </div>
 
         <SalaryPageHero
-          marker={PAGE_IDENTITY_LABELS["hourly-salary"]}
           title={`${formatCurrency(rate)} an Hour is How Much a Year?`}
           description={
             <>
@@ -76,21 +75,23 @@ export default async function HourlyToSalaryPage({ params }: PageProps) {
 
         <section className="gap-sections grid gap-4 md:grid-cols-3">
           <div className="result-card">
-            <p className="metric-label">Annual salary</p>
-            <p className="metric-value metric-value-primary">{formatCurrency(annual, 0)}</p>
+            <p className="text-sm text-neutral-300">Annual salary</p>
+            <p className="mt-2 text-4xl font-semibold md:text-5xl">
+              {formatCurrency(annual, 0)}
+            </p>
           </div>
           <div className="metric-card">
-            <p className="metric-label">Monthly pay</p>
-            <p className="metric-value">{formatCurrency(monthly)}</p>
+            <p className="text-sm text-neutral-400">Monthly pay</p>
+            <p className="mt-2 text-3xl font-semibold">{formatCurrency(monthly)}</p>
           </div>
           <div className="metric-card">
-            <p className="metric-label">Biweekly pay</p>
-            <p className="metric-value">{formatCurrency(biweekly)}</p>
+            <p className="text-sm text-neutral-400">Biweekly pay</p>
+            <p className="mt-2 text-3xl font-semibold">{formatCurrency(biweekly)}</p>
           </div>
         </section>
 
         <section className="gap-sections section-card">
-          <h2 className="section-title">Related conversions</h2>
+          <h2 className="text-2xl font-semibold">Related conversions</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-4">
             {[15, 20, 25, 30].map((item) => (
               <LinkCard key={item} href={`/hourly/${item}/to-salary`}>

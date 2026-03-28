@@ -68,7 +68,7 @@ export default function HomePage() {
 
         <section className="gap-sections grid gap-6 md:grid-cols-2">
           <div className="section-card">
-            <h2 className="section-title">Hourly to salary</h2>
+            <h2 className="text-2xl font-semibold">Hourly to salary</h2>
             <p className="mt-2 text-neutral-300">
               See what an hourly wage looks like per year, month, and paycheck.
             </p>
@@ -83,7 +83,7 @@ export default function HomePage() {
           </div>
 
           <div className="section-card">
-            <h2 className="section-title">Salary to hourly</h2>
+            <h2 className="text-2xl font-semibold">Salary to hourly</h2>
             <p className="mt-2 text-neutral-300">
               Convert annual salary into hourly pay and compare earnings.
             </p>
@@ -101,7 +101,7 @@ export default function HomePage() {
         </section>
 
         <section className="gap-sections section-card">
-          <h2 className="section-title">After-tax pay by state</h2>
+          <h2 className="text-2xl font-semibold">After-tax pay by state</h2>
           <p className="mt-2 text-neutral-300">
             Estimate take-home pay after federal and state taxes.
           </p>
