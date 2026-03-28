@@ -6,7 +6,6 @@ import JsonLd from "@/components/JsonLd";
 import SalaryPageHero from "@/components/SalaryPageHero";
 import SiteShell from "@/components/SiteShell";
 import ValueLinks from "@/components/ValueLinks";
-import { PAGE_IDENTITY_LABELS, getPageTheme } from "@/lib/pageThemes";
 import { clampSalaryForSeo, formatCurrency, toNumber } from "@/lib/pay";
 import { getThemeByStateSlug, themeToCssVars } from "@/lib/stateThemes";
 import { getStateBySlug } from "@/lib/states";
@@ -57,8 +56,11 @@ export default async function AfterTaxStatePage({ params }: PageProps) {
   if (!state) {
     return (
       <SiteShell>
-        <main className="shell">
-          <p className="text-neutral-300">State not found.</p>
+        <main id="main-content" className="shell">
+          <h1 className="text-3xl font-bold tracking-tight md:text-5xl">State not found</h1>
+          <p className="mt-4 text-neutral-200">
+            We could not find that state page.
+          </p>
         </main>
       </SiteShell>
     );
@@ -119,21 +121,21 @@ export default async function AfterTaxStatePage({ params }: PageProps) {
       <JsonLd data={faqJsonLd} />
 
       <SiteShell theme={stateTheme}>
-        <main className="shell">
-          <div className="mb-8 text-sm text-neutral-400">
-            <Link href="/" className="hover:text-white">
+        <main id="main-content" className="shell">
+          <nav className="mb-8 text-sm text-neutral-200" aria-label="Breadcrumb">
+            <Link href="/" className="text-link">
               Home
             </Link>
             <span className="mx-2">/</span>
             <Link
               href={`/salary/${amount}/after-tax`}
-              className="hover:text-white"
+              className="text-link"
             >
               After Tax
             </Link>
             <span className="mx-2">/</span>
-            <span>{state.name}</span>
-          </div>
+            <span aria-current="page">{state.name}</span>
+          </nav>
 
           <SalaryPageHero
             title={`${salaryLabel} After Tax in ${state.name}`}

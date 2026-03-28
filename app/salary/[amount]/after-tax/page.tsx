@@ -5,7 +5,6 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import SalaryPageHero from "@/components/SalaryPageHero";
 import SiteShell from "@/components/SiteShell";
-import { PAGE_IDENTITY_LABELS, getPageTheme } from "@/lib/pageThemes";
 import { clampSalaryForSeo, formatCurrency, toNumber } from "@/lib/pay";
 import { STATES } from "@/lib/states";
 
@@ -62,14 +61,14 @@ export default async function AfterTaxHubPage({ params }: PageProps) {
       <JsonLd data={breadcrumbJsonLd} />
 
       <SiteShell>
-        <main className="shell">
-          <div className="mb-8 text-sm text-neutral-400">
-            <Link href="/" className="hover:text-white">
+        <main id="main-content" className="shell">
+          <nav className="mb-8 text-sm text-neutral-200" aria-label="Breadcrumb">
+            <Link href="/" className="text-link">
               Home
             </Link>
             <span className="mx-2">/</span>
-            <span>After Tax</span>
-          </div>
+            <span aria-current="page">After Tax</span>
+          </nav>
 
           <SalaryPageHero
             title={`${salaryLabel} Salary After Tax by State`}
