@@ -116,7 +116,7 @@ export default async function SalaryToHourlyPage({ params }: PageProps) {
       <SiteShell>
         <main id="main-content" className="shell">
           <nav className="mb-8 text-sm text-neutral-200" aria-label="Breadcrumb">
-            <Link href="/" className="text-link">
+            <Link href="/">
               Home
             </Link>
             <span className="mx-2">/</span>

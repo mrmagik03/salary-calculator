@@ -123,13 +123,12 @@ export default async function AfterTaxStatePage({ params }: PageProps) {
       <SiteShell theme={stateTheme}>
         <main id="main-content" className="shell">
           <nav className="mb-8 text-sm text-neutral-200" aria-label="Breadcrumb">
-            <Link href="/" className="text-link">
+            <Link href="/">
               Home
             </Link>
             <span className="mx-2">/</span>
             <Link
               href={`/salary/${amount}/after-tax`}
-              className="text-link"
             >
               After Tax
             </Link>
