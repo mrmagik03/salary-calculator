@@ -71,10 +71,7 @@ export default async function AfterTaxStatePage({ params }: PageProps) {
   const monthlyLabel = formatCurrency(net / 12);
   const biweeklyLabel = formatCurrency(net / 26);
   const hourlyLabel = formatCurrency(net / 2080);
-  const stateTheme = {
-    ...getPageTheme("after-tax"),
-    ...themeToCssVars(getThemeByStateSlug(state.slug)),
-  };
+  const stateTheme = themeToCssVars(getThemeByStateSlug(state.slug));
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -139,7 +136,6 @@ export default async function AfterTaxStatePage({ params }: PageProps) {
           </div>
 
           <SalaryPageHero
-            marker={PAGE_IDENTITY_LABELS["after-tax"]}
             title={`${salaryLabel} After Tax in ${state.name}`}
             description={
               <>
@@ -153,29 +149,29 @@ export default async function AfterTaxStatePage({ params }: PageProps) {
 
           <section className="gap-sections grid gap-4 md:grid-cols-4">
             <div className="result-card">
-              <p className="metric-label">Net yearly pay</p>
-              <p className="metric-value metric-value-primary">{netLabel}</p>
+              <p className="text-sm text-neutral-300">Net yearly pay</p>
+              <p className="mt-2 text-4xl font-semibold md:text-5xl">{netLabel}</p>
             </div>
 
             <div className="metric-card">
-              <p className="metric-label">Monthly take-home</p>
-              <p className="metric-value">{monthlyLabel}</p>
+              <p className="text-sm text-neutral-400">Monthly take-home</p>
+              <p className="mt-2 text-3xl font-semibold">{monthlyLabel}</p>
             </div>
 
             <div className="metric-card">
-              <p className="metric-label">Biweekly take-home</p>
-              <p className="metric-value">{biweeklyLabel}</p>
+              <p className="text-sm text-neutral-400">Biweekly take-home</p>
+              <p className="mt-2 text-3xl font-semibold">{biweeklyLabel}</p>
             </div>
 
             <div className="metric-card">
-              <p className="metric-label">Hourly take-home</p>
-              <p className="metric-value">{hourlyLabel}</p>
+              <p className="text-sm text-neutral-400">Hourly take-home</p>
+              <p className="mt-2 text-3xl font-semibold">{hourlyLabel}</p>
             </div>
           </section>
 
           <section className="gap-sections grid gap-6 lg:grid-cols-[1.4fr_0.9fr]">
             <div className="section-card">
-              <h2 className="section-title">
+              <h2 className="text-2xl font-semibold">
                 Tax breakdown in {state.name}
               </h2>
 
