@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import LinkCard from "@/components/LinkCard";
 
 export const metadata: Metadata = {
   title:
@@ -41,20 +41,6 @@ const afterTaxExamples = [
   },
 ];
 
-function LinkCard({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link href={href} className="subtle-link-card block text-sm text-neutral-100">
-      {children}
-    </Link>
-  );
-}
-
 export default function HomePage() {
   return (
     <main className="ambient-top ambient-bottom min-h-screen">
@@ -70,18 +56,19 @@ export default function HomePage() {
             breakdowns, and search-friendly pay comparisons.
           </p>
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            <LinkCard href="/hourly/25/to-salary">Hourly to salary</LinkCard>
-            <LinkCard href="/salary/60000/to-hourly">Salary to hourly</LinkCard>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <LinkCard href="/hourly/25/to-salary">Hourly</LinkCard>
+            <LinkCard href="/salary/60000/monthly">Monthly</LinkCard>
+            <LinkCard href="/salary/60000/biweekly">Biweekly</LinkCard>
             <LinkCard href="/salary/60000/after-tax/texas">
               After-tax calculator
             </LinkCard>
           </div>
         </section>
 
-        <section className="mt-8 grid gap-6 md:grid-cols-2">
-          <div className="glass-card p-6">
-            <h2 className="text-2xl font-semibold">Hourly to salary</h2>
+        <section className="gap-sections grid gap-6 md:grid-cols-2">
+          <div className="section-card">
+            <h2 className="section-title">Hourly to salary</h2>
             <p className="mt-2 text-neutral-300">
               See what an hourly wage looks like per year, month, and paycheck.
             </p>
@@ -95,8 +82,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="glass-card p-6">
-            <h2 className="text-2xl font-semibold">Salary to hourly</h2>
+          <div className="section-card">
+            <h2 className="section-title">Salary to hourly</h2>
             <p className="mt-2 text-neutral-300">
               Convert annual salary into hourly pay and compare earnings.
             </p>
@@ -107,12 +94,14 @@ export default function HomePage() {
                   {item.label}
                 </LinkCard>
               ))}
+              <LinkCard href="/salary/60000/monthly">$60,000 to monthly</LinkCard>
+              <LinkCard href="/salary/60000/biweekly">$60,000 to biweekly</LinkCard>
             </div>
           </div>
         </section>
 
-        <section className="glass-card mt-8 p-6">
-          <h2 className="text-2xl font-semibold">After-tax pay by state</h2>
+        <section className="gap-sections section-card">
+          <h2 className="section-title">After-tax pay by state</h2>
           <p className="mt-2 text-neutral-300">
             Estimate take-home pay after federal and state taxes.
           </p>

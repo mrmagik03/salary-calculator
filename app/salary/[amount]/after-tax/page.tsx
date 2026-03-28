@@ -3,7 +3,9 @@ export const dynamic = "force-dynamic";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import SalaryPageHero from "@/components/SalaryPageHero";
 import SiteShell from "@/components/SiteShell";
+import { PAGE_IDENTITY_LABELS, getPageTheme } from "@/lib/pageThemes";
 import { clampSalaryForSeo, formatCurrency, toNumber } from "@/lib/pay";
 import { STATES } from "@/lib/states";
 
@@ -59,41 +61,43 @@ export default async function AfterTaxHubPage({ params }: PageProps) {
     <>
       <JsonLd data={breadcrumbJsonLd} />
 
-      <SiteShell>
-        <div className="mb-8 text-sm text-neutral-400">
-          <Link href="/" className="hover:text-white">
-            Home
-          </Link>
-          <span className="mx-2">/</span>
-          <span>After Tax</span>
-        </div>
-
-        <section className="rounded-2xl border border-neutral-800 bg-neutral-900 p-8 shadow-sm">
-          <h1 className="text-3xl font-bold tracking-tight md:text-5xl">
-            {salaryLabel} Salary After Tax by State
-          </h1>
-
-          <p className="mt-4 max-w-3xl text-lg text-neutral-300">
-            Compare estimated take-home pay for <strong>{salaryLabel}</strong>{" "}
-            across states.
-          </p>
-        </section>
-
-        <section className="mt-8 rounded-2xl border border-neutral-800 bg-neutral-900 p-6 shadow-sm">
-          <h2 className="text-2xl font-semibold">Choose a state</h2>
-
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {STATES.map((state) => (
-              <Link
-                key={state.slug}
-                href={`/salary/${amount}/after-tax/${state.slug}`}
-                className="rounded-xl border border-neutral-800 bg-neutral-950/60 px-4 py-3 text-sm text-neutral-200 transition hover:border-neutral-700 hover:bg-neutral-950"
-              >
-                {state.name}
-              </Link>
-            ))}
+      <SiteShell theme={getPageTheme("after-tax")}>
+        <main className="shell">
+          <div className="mb-8 text-sm text-neutral-400">
+            <Link href="/" className="hover:text-white">
+              Home
+            </Link>
+            <span className="mx-2">/</span>
+            <span>After Tax</span>
           </div>
-        </section>
+
+          <SalaryPageHero
+            marker={PAGE_IDENTITY_LABELS["after-tax"]}
+            title={`${salaryLabel} Salary After Tax by State`}
+            description={
+              <>
+                Compare estimated take-home pay for <strong>{salaryLabel}</strong>{" "}
+                across states.
+              </>
+            }
+          />
+
+          <section className="gap-sections section-card">
+            <h2 className="section-title">Choose a state</h2>
+
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              {STATES.map((state) => (
+                <Link
+                  key={state.slug}
+                  href={`/salary/${amount}/after-tax/${state.slug}`}
+                  className="tile-link"
+                >
+                  {state.name}
+                </Link>
+              ))}
+            </div>
+          </section>
+        </main>
       </SiteShell>
     </>
   );
