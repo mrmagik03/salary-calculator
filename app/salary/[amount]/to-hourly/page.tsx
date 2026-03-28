@@ -6,7 +6,6 @@ import JsonLd from "@/components/JsonLd";
 import SalaryPageHero from "@/components/SalaryPageHero";
 import SiteShell from "@/components/SiteShell";
 import ValueLinks from "@/components/ValueLinks";
-import { PAGE_IDENTITY_LABELS, getPageTheme } from "@/lib/pageThemes";
 import {
   annualSalaryToBiweekly,
   annualSalaryToHourly,
@@ -115,14 +114,14 @@ export default async function SalaryToHourlyPage({ params }: PageProps) {
       <JsonLd data={faqJsonLd} />
 
       <SiteShell>
-        <main className="shell">
-          <div className="mb-8 text-sm text-neutral-400">
+        <main id="main-content" className="shell">
+          <nav className="mb-8 text-sm text-neutral-200" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-white">
               Home
             </Link>
             <span className="mx-2">/</span>
-            <span>Salary to Hourly</span>
-          </div>
+            <span aria-current="page">Salary to Hourly</span>
+          </nav>
 
           <SalaryPageHero
             title={`${salaryLabel} a Year is How Much an Hour?`}

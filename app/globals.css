@@ -49,6 +49,28 @@ a {
   text-decoration: none;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid rgb(var(--accent-rgb));
+  outline-offset: 2px;
+  border-radius: 0.375rem;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+[role="button"]:focus:not(:focus-visible),
+[tabindex]:focus:not(:focus-visible) {
+  outline: none;
+}
+
 ::selection {
   background: rgb(var(--accent-rgb) / 0.22);
   color: #f9fafb;
@@ -171,6 +193,20 @@ a {
 @layer utilities {
   .text-soft {
     color: var(--muted);
+  }
+
+
+  .skip-link {
+    @apply absolute left-4 top-4 z-50 rounded-md px-4 py-2 text-sm font-semibold;
+    background: var(--bg-elevated-strong);
+    color: var(--foreground);
+    border: 1px solid var(--border-strong);
+    transform: translateY(-180%);
+    transition: transform 140ms ease;
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
   }
 
   .ambient-top {

@@ -4,7 +4,7 @@ import JsonLd from "@/components/JsonLd";
 import SalaryPageHero from "@/components/SalaryPageHero";
 import SiteShell from "@/components/SiteShell";
 import LinkCard from "@/components/LinkCard";
-import { PAGE_IDENTITY_LABELS, getPageTheme } from "@/lib/pageThemes";
+import { getPageTheme } from "@/lib/pageThemes";
 import {
   annualSalaryToBiweekly,
   annualSalaryToMonthly,
@@ -53,14 +53,14 @@ export default async function HourlyToSalaryPage({ params }: PageProps) {
   return (
     <SiteShell theme={getPageTheme("hourly-salary")}>
       <JsonLd data={faqJsonLd} />
-      <main className="shell">
-        <div className="mb-8 text-sm text-neutral-400">
+      <main id="main-content" className="shell">
+        <nav className="mb-8 text-sm text-neutral-200" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-white">
             Home
           </Link>
           <span className="mx-2">/</span>
-          <span>Hourly to Salary</span>
-        </div>
+          <span aria-current="page">Hourly to Salary</span>
+        </nav>
 
         <SalaryPageHero
           title={`${formatCurrency(rate)} an Hour is How Much a Year?`}
