@@ -15,7 +15,10 @@ export default function SiteShell({
       </a>
       <header className="site-header">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
-          <Link href="/" className="text-sm font-semibold tracking-wide text-white">
+          <Link
+            href="/"
+            className="text-sm font-semibold tracking-wide text-white no-underline"
+          >
             My Salary Calculator
           </Link>
           <nav className="flex gap-4 text-sm text-neutral-300" aria-label="Primary site navigation">

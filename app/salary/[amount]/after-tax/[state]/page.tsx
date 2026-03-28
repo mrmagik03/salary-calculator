@@ -129,7 +129,7 @@ export default async function AfterTaxStatePage({ params }: PageProps) {
             <span className="mx-2">/</span>
             <Link
               href={`/salary/${amount}/after-tax`}
-              className="hover:text-white"
+              className="text-link"
             >
               After Tax
             </Link>
