@@ -42,22 +42,17 @@ export default function SiteShell({
       </header>
       {children}
       <footer className="mx-auto mt-10 w-full max-w-6xl px-4 pb-10 md:px-6">
-        <section className="section-card">
-          <h2 className="text-lg font-semibold text-white">
-            More financial calculators
-          </h2>
-          <p className="mt-2 text-sm text-neutral-200">
-            If you are planning a loan or comparing monthly bills, visit{" "}
-            <a
-              href="https://monthlypaymentcalc.co"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Monthly Payment Calculator
-            </a>{" "}
-            for quick monthly payment estimates.
-          </p>
-        </section>
+        <p className="text-xs text-neutral-300">
+          Also try{" "}
+          <a
+            href="https://monthlypaymentcalc.co"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Monthly Payment Calculator
+          </a>{" "}
+          for quick monthly payment estimates.
+        </p>
       </footer>
     </div>
   );
